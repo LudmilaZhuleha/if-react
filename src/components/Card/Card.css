@@ -1,0 +1,24 @@
+.card {
+    display: flex;
+    flex-flow: column wrap;
+    flex-basis: 23%;
+    list-style: none;
+    margin-bottom: 5px;
+}
+
+.card-image {
+    width: 100%;
+}
+.image-name {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #3077C6;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.image-location {
+    color: #BFBFBF;
+    font-size: 24px;
+    margin-top: 15px;
+}

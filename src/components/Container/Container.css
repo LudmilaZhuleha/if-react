@@ -1,0 +1,15 @@
+.container {
+    width: min(100%, 1440px);
+    min-height: 828px;
+    margin: 0 auto;
+    padding: 80px 104px;
+    position: relative;
+    background-color: #EAF0F9;
+}
+.title {
+    color: #383838;
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 105px;
+    text-align: center;
+}
