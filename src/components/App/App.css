@@ -1,0 +1,6 @@
+.cards {
+    display: flex;
+    flex-flow: row wrap;
+    column-gap: 16px;
+    justify-content: space-between;
+}
