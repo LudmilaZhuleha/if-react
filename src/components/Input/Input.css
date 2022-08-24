@@ -1,0 +1,99 @@
+.main-search-container {
+    max-width: 1232px;
+    height: 64px;
+    background-color: #ffffff;
+    border: 3px solid #f3f3f4;
+    border-radius: 8px;
+    margin-bottom: 120px;
+}
+
+.main-search-form {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+
+.input-place-wrap {
+    width: 36%;
+}
+
+.input-place {
+    width: 100%;
+}
+
+input {
+    height: 57px;
+    border: none;
+    border-radius: 8px;
+    padding-left: 24px;
+    font-size: 18px;
+}
+
+label {
+    position: absolute;
+    color: #383838;
+    font-size: 18px;
+    transition: 0.2s ease all;
+}
+
+input:focus ~ .label-place,
+input:not(:focus):valid ~ .label-place {
+    top: -48px;
+    left: 24px;
+    color: #ffffff;
+    opacity: 1;
+}
+
+.label-place, .label-date-1, .label-date-2 {
+    left: 24px;
+    top: 20px;
+}
+
+.input-date-wrap {
+    display: flex;
+    width: 21%;
+    border: 3px solid #f5bd41;
+    border-radius: 8px;
+    margin-top: -3px;
+}
+
+.input-date-wrap-1, .input-date-wrap-2 {
+    width: 50%;
+    position: relative;
+}
+
+.input-date {
+    width: 100%;
+}
+
+input:focus ~ .label-date-1,
+input:not(:focus):valid ~ .label-date-1 {
+    top: -48px;
+    left: 24px;
+    color: #ffffff;
+    opacity: 1;
+}
+
+input:focus ~ .label-date-2,
+input:not(:focus):valid ~ .label-date-2 {
+    top: -48px;
+    left: 24px;
+    color: #ffffff;
+    opacity: 1;
+}
+
+input[type="date"] {
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    padding-inline-start: 24px;
+}
+
+.input-conditions {
+    width: 27%;
+}
+
+.label-conditions {
+    left: 713px;
+    top: 20px;
+}
