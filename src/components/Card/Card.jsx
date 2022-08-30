@@ -6,6 +6,8 @@ function Card(data) {
   return (
     <div className="card">
       <img
+        width="296"
+        height="296"
         className="card-image"
         src={data.imageUrl}
         alt={data.name}

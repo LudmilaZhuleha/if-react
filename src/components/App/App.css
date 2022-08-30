@@ -1,12 +1,3 @@
-.cards {
-    display: flex;
-    flex-flow: row wrap;
-    column-gap: 16px;
-    justify-content: space-between;
-}
-.active {
-    display: none;
-}
 .night-icon:hover, .account-icon:hover {
     color: #F5BD41;
     outline: none;
