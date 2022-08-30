@@ -9,27 +9,29 @@ import HeaderNav from "../HeaderNav/HeaderNav";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 import GetHomes from "../GetHomes/GetHomes";
+import AvailableHomes from "../AvailableHomes/AvailableHomes";
 
 function App() {
   const [value, setValue] = useState("");
-  const [destination, setDestination] = useState([]);
+  // const [destination, setDestination] = useState([]);
   const [AvailableIsOpen, setAvailableIsOpen] = useState(false);
 
   const handleValue = (e) => {
     setValue(e.target.value);
   };
-  const searchMatches = (arr, str) => {
-    const newArr = [];
-    arr.forEach((item) => {
-      const hotelItem = Object.values(item).join("").toLowerCase();
-      if (hotelItem.includes(str)) newArr.push(item);
-    });
-    return newArr;
-  };
+  // const searchMatches = (arr, str) => {
+  //   const newArr = [];
+  //   arr.forEach((item) => {
+  //     const hotelItem = Object.values(item).join("").toLowerCase();
+  //     if (hotelItem.includes(str)) newArr.push(item);
+  //   });
+  //   return newArr;
+  // };
+
   const handleClick = (e) => {
     e.preventDefault();
     setAvailableIsOpen(true);
-    setDestination(searchMatches(homes, value));
+    // setDestination(searchMatches(homes, value));
     setValue("");
   };
   return (
@@ -90,23 +92,7 @@ function App() {
       </MainPage>
       {AvailableIsOpen && (
         <Container title="Available hotels">
-          <div className="cards">
-            {destination.length > 0 ? (
-              destination.map((home) => {
-                return (
-                  <Card
-                    imageUrl={home.imageUrl}
-                    name={home.name}
-                    city={home.city}
-                    country={home.country}
-                    key={home.id}
-                  />
-                );
-              })
-            ) : (
-              <p>{value} - not found</p>
-            )}
-          </div>
+          <AvailableHomes value={value} />
         </Container>
       )}
       <Container title="Homes Guests Love">
