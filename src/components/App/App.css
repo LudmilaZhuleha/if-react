@@ -5,5 +5,26 @@
     justify-content: space-between;
 }
 .active {
-    display: flex;
+    display: none;
+}
+.night-icon:hover, .account-icon:hover {
+    color: #F5BD41;
+    outline: none;
+}
+.night-icon {
+    width: 30px;
+    height: 30px;
+    color: #FFFFFF;
+    transition-property: color;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+}
+
+.account-icon {
+    width: 40px;
+    height: 40px;
+    color: #FFFFFF;
+    transition-property: color;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
 }

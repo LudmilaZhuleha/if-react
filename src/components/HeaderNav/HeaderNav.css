@@ -45,12 +45,10 @@
     position: absolute;
     bottom: -12px;
 }
-.night-icon {
-    width: 30px;
-    height: 30px;
+.header-items-button {
+    color: #FFFFFF;
+    transition-property: color;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
 }
 
-.account-icon {
-    width: 40px;
-    height: 40px;
-}

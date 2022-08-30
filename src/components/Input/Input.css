@@ -19,7 +19,7 @@
 }
 
 .input-place {
-    width: 100%;
+    width: 93%;
 }
 
 input {
@@ -59,7 +59,7 @@ input:not(:focus):valid ~ .label-place {
 }
 
 .input-date-wrap-1, .input-date-wrap-2 {
-    width: 50%;
+    width: 44%;
     position: relative;
 }
 

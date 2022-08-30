@@ -1,10 +1,9 @@
 import React from 'react';
-// import '../../assets/svg-sprites.svg';
 
-const Icon = ({id, ...props}) => {
+const Icon = ({id, width, height, ...props}) => {
   return (
-    <svg {...props}>
-      <use href={`../../assets/svg-sprites.svg#${id}`} />
+    <svg width={width} height={height} {...props}>
+      <use xlinkHref={`/images/sprite.svg#${id}`} />
     </svg>
   );
 };

@@ -12,7 +12,7 @@ import Button from "../Button/Button";
 function App() {
   const[value, setValue] = useState('');
   const[destination, setDestination] = useState([]);
-  const[active, setActive] = useState(false);
+  const[AvailableIsOpen, setAvailableIsOpen] = useState(false);
 
   const handleValue =(e)=>{
     setValue(e.target.value)
@@ -27,14 +27,15 @@ function App() {
   }
   const handleClick =(e)=>{
     e.preventDefault();
-    setActive(true);
+    setAvailableIsOpen(true);
     setDestination(searchMatches(homes, value))
+    setValue('');
   }
   return (
     <>
       <MainPage>
         <header className="main-header">
-          <Icon className="header-logo" id="logo"/>
+          <Icon className="header-logo" id="logo" width="205" height="40"/>
           <HeaderNav nightBtn={<Icon className="night-icon" id="night" />} accountBtn={<Icon className="account-icon" id="account" />}/>
         </header>
         <h1 className="main-header-title">Discover stays to live, work or just relax</h1>
@@ -62,9 +63,9 @@ function App() {
           </form>
         </div>
       </MainPage>
-      <Container title="Available hotels" className={active ? "active" : null}>
+      {AvailableIsOpen && <Container title="Available hotels">
         <div className="cards">
-          {destination.length>0 ? destination.map((home) => {
+          {destination.length > 0 ? destination.map((home) => {
             return (
               <Card
                 imageUrl={home.imageUrl}
@@ -74,9 +75,9 @@ function App() {
                 key={home.id}
               />
             );
-          }): (<p>{value} - not found</p>)}
+          }) : (<p>{value} - not found</p>)}
         </div>
-      </Container>
+      </Container>}
       <Container title="Homes Guests Love">
         <div className="cards">
           {homes.map((home) => {
