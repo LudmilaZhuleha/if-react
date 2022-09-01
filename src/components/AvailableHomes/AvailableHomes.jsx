@@ -1,16 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import Card from "../Card/Card";
+import {searchHotelRequest} from "../../constants";
 
-const AvailableHomes = ({value}) => {
+const AvailableHomes = ({value, onChange}) => {
   const[available, setAvailable] = useState([])
-  const urlGenerator =(value)=> `https://fe-student-api.herokuapp.com/api/hotels?search=${value}`;
+
   useEffect(()=>{
     const availableFetch = async(url)=>{
       const response = await fetch(url)
       const data = await response.json()
       setAvailable(data)
     }
-    availableFetch(urlGenerator({value}))
+    availableFetch(`${searchHotelRequest}${value}`);
+    onChange('');
   }, [])
 
   return (

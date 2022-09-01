@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "./App.css";
-import homes from "./data";
-import Card from "../Card/Card";
 import Container from "../Container/Container";
 import MainPage from "../MainPage/MainPage";
 import Icon from "../Icon/Icon";
@@ -13,26 +11,17 @@ import AvailableHomes from "../AvailableHomes/AvailableHomes";
 
 function App() {
   const [value, setValue] = useState("");
-  // const [destination, setDestination] = useState([]);
   const [AvailableIsOpen, setAvailableIsOpen] = useState(false);
 
   const handleValue = (e) => {
     setValue(e.target.value);
   };
-  // const searchMatches = (arr, str) => {
-  //   const newArr = [];
-  //   arr.forEach((item) => {
-  //     const hotelItem = Object.values(item).join("").toLowerCase();
-  //     if (hotelItem.includes(str)) newArr.push(item);
-  //   });
-  //   return newArr;
-  // };
 
   const handleClick = (e) => {
     e.preventDefault();
     setAvailableIsOpen(true);
     // setDestination(searchMatches(homes, value));
-    setValue("");
+    // setValue("");
   };
   return (
     <>
@@ -92,7 +81,12 @@ function App() {
       </MainPage>
       {AvailableIsOpen && (
         <Container title="Available hotels">
-          <AvailableHomes value={value} />
+          <AvailableHomes
+            value={value}
+            onChange={(value) => {
+              setValue(value);
+            }}
+          />
         </Container>
       )}
       <Container title="Homes Guests Love">
