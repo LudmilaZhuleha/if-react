@@ -1,0 +1,31 @@
+main {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+}
+
+.main {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+}
+
+.main-container {
+    width: min(100%, 1440px);
+    min-height: 100vh;
+    padding: 51px 104px 120px;
+    margin: 0 auto;
+}
+.main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.main-header-title {
+    max-width: 542px;
+    font-size: 50px;
+    font-weight: 500;
+    color: #ffffff;
+    margin-top: 202px;
+    margin-bottom: 100px;
+}
