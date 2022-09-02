@@ -20,8 +20,6 @@ function App() {
   const handleClick = (e) => {
     e.preventDefault();
     setAvailableIsOpen(true);
-    // setDestination(searchMatches(homes, value));
-    // setValue("");
   };
   return (
     <>
