@@ -4,13 +4,13 @@ import mainPageImg from '../../assets/mainpage-image.png';
 
 const MainPage = ({children}) => {
   return (
-    <main>
+    <section>
       <div className="main" style={{backgroundImage: `url(${mainPageImg})`}}>
         <div className="main-container">
           {children}
         </div>
       </div>
-    </main>
+    </section>
   );
 };
 export default MainPage;
