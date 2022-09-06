@@ -8,11 +8,16 @@ import Input from "../Input/Input";
 import Button from "../Button/Button";
 import GetHomes from "../GetHomes/GetHomes";
 import AvailableHomes from "../AvailableHomes/AvailableHomes";
+import DatePick from "../DatePicker/DatePicker";
 
 function App() {
   const [value, setValue] = useState("");
   const [AvailableIsOpen, setAvailableIsOpen] = useState(false);
-
+  // const [isDatePickerOn, setDatePickerOn] = useState(true);
+  //
+  // const openCalendar = () =>{
+  //   setDatePickerOn(true)
+  // }
   const handleValue = (e) => {
     setValue(e.target.value);
   };
@@ -52,13 +57,13 @@ function App() {
               </Input>
               <div className="input-date-wrap">
                 <Input className="input-date-wrap-1">
-                  <input className="input-date" type="text" id="check-in" />
+                  <DatePick />
                   <label htmlFor="check-in" className="label-date-1">
                     Check-In
                   </label>
                 </Input>
                 <Input className="input-date-wrap-2">
-                  <input className="input-date" type="text" id="check-out" />
+                  <DatePick />
                   <label htmlFor="check-out" className="label-date-2">
                     Check-Out
                   </label>
