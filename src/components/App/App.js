@@ -9,15 +9,18 @@ import Button from "../Button/Button";
 import GetHomes from "../GetHomes/GetHomes";
 import AvailableHomes from "../AvailableHomes/AvailableHomes";
 import DatePick from "../DatePicker/DatePicker";
+import ModalCondition from "../ModalCondition/ModalCondition";
+import ModalConditionForm from "../ModalConditionForm/ModalConditionForm";
 
 function App() {
   const [value, setValue] = useState("");
   const [AvailableIsOpen, setAvailableIsOpen] = useState(false);
-  // const [isDatePickerOn, setDatePickerOn] = useState(true);
-  //
-  // const openCalendar = () =>{
-  //   setDatePickerOn(true)
-  // }
+  const [isConditionsOpen, setIsConditionsOpen] = useState(false);
+
+  const openConditionsModal =()=>{
+    setIsConditionsOpen(true);
+  }
+
   const handleValue = (e) => {
     setValue(e.target.value);
   };
@@ -69,7 +72,7 @@ function App() {
                   </label>
                 </Input>
               </div>
-              <input type="text" className="input-conditions" id="conditions" />
+              <Input className="input-conditions" onClick={openConditionsModal}/>
               <label htmlFor="conditions" className="label-conditions">
                 2 Adults &#8212; 0 Children &#8212; 1 Room
               </label>
@@ -79,6 +82,13 @@ function App() {
                 onClick={handleClick}
               />
             </div>
+            {isConditionsOpen && (
+              <ModalConditionForm>
+                <ModalCondition title="Adults" id='adults'/>
+                <ModalCondition title="Children" id='child'/>
+                <ModalCondition title="Rooms" id='rooms'/>
+              </ModalConditionForm>
+            )}
           </form>
         </div>
       </MainPage>

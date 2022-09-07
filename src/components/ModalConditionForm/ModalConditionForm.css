@@ -1,0 +1,17 @@
+.main-form-modal {
+    padding: 22px;
+    width: 259px;
+    height: auto;
+    background-color: #fff;
+    border-radius: 8px;
+    position: absolute;
+    top: 640px;
+    right: 519px;
+}
+
+.modal-list {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin: 0;
+}
