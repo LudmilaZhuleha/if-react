@@ -16,10 +16,14 @@ function App() {
   const [value, setValue] = useState("");
   const [AvailableIsOpen, setAvailableIsOpen] = useState(false);
   const [isConditionsOpen, setIsConditionsOpen] = useState(false);
+  const [isChildOn, setIsChildOn] = useState(false);
 
-  const openConditionsModal =()=>{
-    setIsConditionsOpen(true);
-  }
+  const handleChild = () => {
+    setIsChildOn(true);
+  };
+  const openConditionsModal = () => {
+    setIsConditionsOpen(!isConditionsOpen);
+  };
 
   const handleValue = (e) => {
     setValue(e.target.value);
@@ -72,7 +76,10 @@ function App() {
                   </label>
                 </Input>
               </div>
-              <Input className="input-conditions" onClick={openConditionsModal}/>
+              <Input
+                className="input-conditions"
+                onClick={openConditionsModal}
+              />
               <label htmlFor="conditions" className="label-conditions">
                 2 Adults &#8212; 0 Children &#8212; 1 Room
               </label>
@@ -83,10 +90,14 @@ function App() {
               />
             </div>
             {isConditionsOpen && (
-              <ModalConditionForm>
-                <ModalCondition title="Adults" id='adults'/>
-                <ModalCondition title="Children" id='child'/>
-                <ModalCondition title="Rooms" id='rooms'/>
+              <ModalConditionForm condition={isChildOn}>
+                <ModalCondition title="Adults" id="adults" />
+                <ModalCondition
+                  title="Children"
+                  id="child"
+                  onClick={handleChild}
+                />
+                <ModalCondition title="Rooms" id="rooms" />
               </ModalConditionForm>
             )}
           </form>
