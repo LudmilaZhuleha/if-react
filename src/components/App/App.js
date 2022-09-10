@@ -8,6 +8,7 @@ import Input from "../Input/Input";
 import Button from "../Button/Button";
 import GetHomes from "../GetHomes/GetHomes";
 import AvailableHomes from "../AvailableHomes/AvailableHomes";
+import Footer from "../Footer/Footer";
 
 function App() {
   const [value, setValue] = useState("");
@@ -90,6 +91,7 @@ function App() {
       <Container title="Homes Guests Love">
         <GetHomes />
       </Container>
+      <Footer />
     </>
   );
 }
