@@ -3,6 +3,15 @@ import Icon from '../Icon/Icon';
 import './Footer.css'
 
 const Footer = () => {
+  const descriptions =['How Triphouse works','Careers','Privacy','Terms'];
+  const homesTypes =['Guest houses','Hotels','Apartments','Villas','Holiday homes','Hostels'];
+
+  const descriptionList = descriptions.map((item, i)=>{
+    return (<li className="footer-item" key={i}>{item}</li>)});
+
+  const homesTypesList = homesTypes.map((item, i)=>{
+    return (<li className="footer-item" key={i}>{item}</li>)});
+
   return (
     <footer>
       <div className="footer-wrapper">
@@ -12,19 +21,11 @@ const Footer = () => {
         <div className="footer-container">
           <ul className="footer-list">
             <li className="footer-item footer-list-title">About</li>
-            <li className="footer-item">How Triphouse works</li>
-            <li className="footer-item">Careers</li>
-            <li className="footer-item">Privacy</li>
-            <li className="footer-item">Terms</li>
+            {descriptionList}
           </ul>
           <ul className="footer-list">
             <li className="footer-item footer-list-title">Property types</li>
-            <li className="footer-item">Guest houses</li>
-            <li className="footer-item">Hotels</li>
-            <li className="footer-item">Apartments</li>
-            <li className="footer-item">Villas</li>
-            <li className="footer-item">Holiday homes</li>
-            <li className="footer-item">Hostels</li>
+            {homesTypesList}
           </ul>
           <ul className="footer-list">
             <li className="footer-item footer-list-title">Support</li>

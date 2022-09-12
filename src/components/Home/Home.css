@@ -1,11 +1,11 @@
 .card {
     display: flex;
     flex-flow: column wrap;
-    flex-basis: 23%;
+    width: 296px;
+    height: 296px;
     list-style: none;
     margin-bottom: 5px;
     cursor: pointer;
-    text-decoration: none;
 }
 
 .card-image {

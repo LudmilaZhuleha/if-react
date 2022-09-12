@@ -1,8 +1,11 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import './Card.css';
+import {useParams} from 'react-router-dom'
 
 function Card(data) {
+  // const { id } = useParams();
+
   return (
     <div className="card">
       <img
