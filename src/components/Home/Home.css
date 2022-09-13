@@ -1,17 +1,22 @@
-.card {
+.home-wrapper {
+    display: flex;
+    justify-content: start;
+    margin-bottom: 60px;
+}
+.home-card {
     display: flex;
     flex-flow: column wrap;
-    width: 296px;
-    height: 296px;
+    width: 25%;
+
     list-style: none;
     margin-bottom: 5px;
     cursor: pointer;
 }
 
-.card-image {
+.home-card-image {
     width: 100%;
 }
-.image-name {
+.home-image-name {
     margin-top: 10px;
     margin-bottom: 10px;
     color: #3077C6;
@@ -19,8 +24,43 @@
     font-weight: 400;
 }
 
-.image-location {
+.home-image-location {
     color: #BFBFBF;
     font-size: 24px;
     margin-top: 15px;
+}
+.reviews-card-description {
+    background-color: #EAF0F9;
+    display: flex;
+    flex-direction: column;
+    padding-left: 60px;
+}
+.reviews-card_rating {
+    width: 48px;
+    height: 32px;
+    background-color: #10367C;
+    border-radius: 8px;
+    color: #FFFFFF;
+    margin-top: 20px;
+    padding: 6px 11px;
+}
+.reviews-card_ratinginfo {
+    color: #BFBFBF;
+    font-size: 14px;
+    padding-top: 4px;
+    text-align: start;
+}
+.reviews-card_place {
+    color: #3077C6;
+    font-size: 18px;
+}
+.home-card-button {
+    margin-top: 40px;
+    width: 100%;
+    margin-left: 0;
+    color: #3077C6;
+    font-size: 18px;
+    padding: 13px 24px;
+    border: 1px solid #3077C6;
+    border-radius: 8px;
 }
