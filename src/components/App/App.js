@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import "./App.css";
 import Container from "../Container/Container";
 import MainPage from "../MainPage/MainPage";
@@ -16,14 +16,13 @@ function App() {
   const [value, setValue] = useState("");
   const [AvailableIsOpen, setAvailableIsOpen] = useState(false);
   const [isConditionsOpen, setIsConditionsOpen] = useState(false);
-  const [isChildOn, setIsChildOn] = useState(false);
 
-  const handleChild = () => {
-    setIsChildOn(true);
-  };
   const openConditionsModal = () => {
     setIsConditionsOpen(!isConditionsOpen);
   };
+  useEffect(()=>{
+    console.log('modal', isConditionsOpen)
+  }, [isConditionsOpen])
 
   const handleValue = (e) => {
     setValue(e.target.value);
@@ -90,14 +89,8 @@ function App() {
               />
             </div>
             {isConditionsOpen && (
-              <ModalConditionForm condition={isChildOn}>
-                <ModalCondition title="Adults" id="adults" />
-                <ModalCondition
-                  title="Children"
-                  id="child"
-                  onClick={handleChild}
-                />
-                <ModalCondition title="Rooms" id="rooms" />
+              <ModalConditionForm condition="isChildOn">
+
               </ModalConditionForm>
             )}
           </form>
