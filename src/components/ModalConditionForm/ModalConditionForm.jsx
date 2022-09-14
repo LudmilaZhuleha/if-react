@@ -5,15 +5,18 @@ import Select from "../Select/Select";
 import ModalCondition from "../ModalCondition/ModalCondition";
 import {CONDITION_TYPE} from "../../constants";
 
-
-
 const ModalConditionForm = () => {
   const [childrenNumber, setChildrenNumber] = useState(0);
+  const [selects, setSelects] = useState(null);
 
   useEffect(()=>{
-    console.log('childrenNumber', childrenNumber);
-    // create func creating array Array(count)
-  },[childrenNumber])
+      const createSelectArray = (num)=>{
+      return Array(num).fill(0);
+    };
+      setSelects(createSelectArray(childrenNumber));
+
+    console.log('selects', selects);
+  },[childrenNumber]);
   return (
     <div className="main-form-modal">
       <ul className="modal-list">
@@ -27,7 +30,9 @@ const ModalConditionForm = () => {
       </ul>
       {childrenNumber > 0 ? (
         <ModalChildSelect>
-          <Select/>
+          {
+            selects.map((item, i) => {return(<Select key={i} />)})
+          }
         </ModalChildSelect>) : null}
 
     </div>
