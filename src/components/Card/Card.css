@@ -9,7 +9,7 @@
 }
 
 .card-image {
-    width: 296px;
+    max-width: 296px;
 }
 .image-name {
     margin-top: 10px;

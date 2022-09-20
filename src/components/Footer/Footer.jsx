@@ -1,17 +1,10 @@
-import React from 'react';
-import Icon from '../Icon/Icon';
-import './Footer.css'
+import React from "react";
+import Icon from "../Icon/Icon";
+import List from "../List/List";
+import "./Footer.css";
+import { homesTypes, descriptions } from "../../constants";
 
 const Footer = () => {
-  const descriptions =['How Triphouse works','Careers','Privacy','Terms'];
-  const homesTypes =['Guest houses','Hotels','Apartments','Villas','Holiday homes','Hostels'];
-
-  const descriptionList = descriptions.map((item, i)=>{
-    return (<li className="footer-item" key={i}>{item}</li>)});
-
-  const homesTypesList = homesTypes.map((item, i)=>{
-    return (<li className="footer-item" key={i}>{item}</li>)});
-
   return (
     <footer>
       <div className="footer-wrapper">
@@ -21,11 +14,11 @@ const Footer = () => {
         <div className="footer-container">
           <ul className="footer-list">
             <li className="footer-item footer-list-title">About</li>
-            {descriptionList}
+            <List className="footer-item" list={descriptions} />
           </ul>
           <ul className="footer-list">
             <li className="footer-item footer-list-title">Property types</li>
-            {homesTypesList}
+            <List className="footer-item" list={homesTypes} />
           </ul>
           <ul className="footer-list">
             <li className="footer-item footer-list-title">Support</li>

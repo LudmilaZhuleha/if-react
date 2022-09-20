@@ -1,11 +1,8 @@
 import React from "react";
-import PropTypes from 'prop-types';
-import './Card.css';
-import {useParams} from 'react-router-dom'
+import PropTypes from "prop-types";
+import "./Card.css";
 
 function Card(data) {
-  // const { id } = useParams();
-
   return (
     <div className="card">
       <img
@@ -23,10 +20,10 @@ function Card(data) {
   );
 }
 Card.propTypes = {
-    id: PropTypes.string,
-    name: PropTypes.string,
-    city: PropTypes.string,
-    country: PropTypes.string,
-    imageUrl: PropTypes.string,
-}
+  id: PropTypes.string,
+  name: PropTypes.string,
+  city: PropTypes.string,
+  country: PropTypes.string,
+  imageUrl: PropTypes.string,
+};
 export default Card;
