@@ -1,17 +1,17 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 import Card from "../Card/Card";
-import './GetHomes.css';
-import {homesUrl} from "../../constants";
+import "./GetHomes.css";
+import { homesUrl } from "../../constants";
 
 const GetHomes = () => {
-  const[homes, setHomes]= useState([]);
+  const [homes, setHomes] = useState([]);
 
-  useEffect(()=>{
-    const fetchHomes = async(url) => {
-        const response = await fetch(url)
-        const data = await response.json()
-        setHomes(data)
-      };
+  useEffect(() => {
+    const fetchHomes = async (url) => {
+      const response = await fetch(url);
+      const data = await response.json();
+      setHomes(data);
+    };
     fetchHomes(homesUrl);
   }, []);
 

@@ -1,6 +1,6 @@
 import React from "react";
-import PropTypes from 'prop-types';
-import './Card.css';
+import PropTypes from "prop-types";
+import "./Card.css";
 
 function Card(data) {
   return (
@@ -20,10 +20,10 @@ function Card(data) {
   );
 }
 Card.propTypes = {
-    id: PropTypes.string,
-    name: PropTypes.string,
-    city: PropTypes.string,
-    country: PropTypes.string,
-    imageUrl: PropTypes.string,
-}
+  id: PropTypes.string,
+  name: PropTypes.string,
+  city: PropTypes.string,
+  country: PropTypes.string,
+  imageUrl: PropTypes.string,
+};
 export default Card;

@@ -1,0 +1,6 @@
+.main-header {
+    background-color: #00073B;
+    width: min(100%, 1440px);
+    height: auto;
+    margin: 0 auto;
+}

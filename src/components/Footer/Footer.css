@@ -1,0 +1,42 @@
+footer {
+    background-color: #10367C;
+    color: #ffffff;
+}
+
+.footer-wrapper {
+    padding: 120px 104px;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    display: none;
+    width: 98px;
+    height: 19px;
+    margin: 0 auto 40px;
+}
+
+.footer-container {
+    display: flex;
+}
+
+.footer-list {
+    list-style: none;
+    flex-basis: 33.3%;
+}
+
+.footer-item {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    margin-bottom: 24px;
+}
+
+.footer-list-title {
+    font-weight: 500;
+}
+
+.footer-copyright {
+    font-size: 14px;
+    margin-top: 40px;
+}
