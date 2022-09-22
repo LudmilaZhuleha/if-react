@@ -32,6 +32,9 @@ function App() {
     e.preventDefault();
     setAvailableIsOpen(true);
   };
+
+  const handleLabelCondition =(adultsNumber, childrenNumber, roomsNumber)=> `${adultsNumber} Adults &#8212; ${childrenNumber} Children &#8212; ${roomsNumber} Room`;
+
   return (
     <>
       <MainPage>
@@ -80,7 +83,7 @@ function App() {
                 onClick={openConditionsModal}
               />
               <label htmlFor="conditions" className="label-conditions">
-                2 Adults &#8212; 0 Children &#8212; 1 Room
+                {handleLabelCondition(adultsNumber, childrenNumber, roomsNumber)}
               </label>
               <Button
                 className="button-lg"
@@ -89,7 +92,7 @@ function App() {
               />
             </div>
             {isConditionsOpen && (
-              <ModalConditionForm condition="isChildOn">
+              <ModalConditionForm>
 
               </ModalConditionForm>
             )}
