@@ -9,7 +9,6 @@ import Button from "../Button/Button";
 import GetHomes from "../GetHomes/GetHomes";
 import AvailableHomes from "../AvailableHomes/AvailableHomes";
 import Footer from "../Footer/Footer";
-import Signin from "../Signin/Signin";
 
 function App() {
   const [value, setValue] = useState("");
@@ -93,7 +92,6 @@ function App() {
         <GetHomes />
       </Container>
       <Footer />
-      <Signin />
     </>
   );
 }
