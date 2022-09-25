@@ -1,7 +1,7 @@
-.night-icon:hover, .account-icon:hover {
-    color: #F5BD41;
-    outline: none;
-}
+/*.night-icon:hover, .account-icon:hover {*/
+/*    color: #F5BD41;*/
+/*    outline: none;*/
+/*}*/
 .night-icon {
     width: 30px;
     height: 30px;
@@ -14,8 +14,8 @@
 .account-icon {
     width: 40px;
     height: 40px;
-    color: #FFFFFF;
-    transition-property: color;
-    transition-duration: 300ms;
-    transition-timing-function: ease-in-out;
+    /*color: #FFFFFF;*/
+    /*transition-property: color;*/
+    /*transition-duration: 300ms;*/
+    /*transition-timing-function: ease-in-out;*/
 }

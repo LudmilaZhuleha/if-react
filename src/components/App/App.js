@@ -4,6 +4,7 @@ import Container from "../Container/Container";
 import MainPage from "../MainPage/MainPage";
 import Icon from "../Icon/Icon";
 import HeaderNav from "../HeaderNav/HeaderNav";
+import Signout from "../Signout/Signout";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 import GetHomes from "../GetHomes/GetHomes";
@@ -13,6 +14,8 @@ import Footer from "../Footer/Footer";
 function App() {
   const [value, setValue] = useState("");
   const [AvailableIsOpen, setAvailableIsOpen] = useState(false);
+  const [openSignOut, setOpenSignOut] = useState(false);
+  const [accountColor, setAccountColor] = useState('#FFFFFF');
 
   const handleValue = (e) => {
     setValue(e.target.value);
@@ -22,15 +25,21 @@ function App() {
     e.preventDefault();
     setAvailableIsOpen(true);
   };
+
+  const handleSignout = () =>{
+    setOpenSignOut(true);
+    setAccountColor('#F5BD41');
+  }
   return (
     <>
       <MainPage>
-        <header className="main-header">
+        <header className="main-header" style={{position: 'relative'}}>
           <Icon className="header-logo" id="logo" width="205" height="40" />
           <HeaderNav
             nightBtn={<Icon className="night-icon" id="night" />}
-            accountBtn={<Icon className="account-icon" id="account" />}
+            accountBtn={<Icon className="account-icon" style={{color: accountColor}} id="account" onClick={handleSignout} />}
           />
+          {openSignOut && (<Signout />)}
         </header>
         <h1 className="main-header-title">
           Discover stays to live, work or just relax
