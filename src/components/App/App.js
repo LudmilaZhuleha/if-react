@@ -9,7 +9,6 @@ import Button from "../Button/Button";
 import GetHomes from "../GetHomes/GetHomes";
 import AvailableHomes from "../AvailableHomes/AvailableHomes";
 import DatePick from "../DatePicker/DatePicker";
-import ModalCondition from "../ModalCondition/ModalCondition";
 import ModalConditionForm from "../ModalConditionForm/ModalConditionForm";
 
 function App() {
@@ -33,7 +32,7 @@ function App() {
     setAvailableIsOpen(true);
   };
 
-  const handleLabelCondition =(adultsNumber, childrenNumber, roomsNumber)=> `${adultsNumber} Adults &#8212; ${childrenNumber} Children &#8212; ${roomsNumber} Room`;
+  // const handleLabelCondition =(adultsNumber, childrenNumber, roomsNumber)=> `${adultsNumber} Adults &#8212; ${childrenNumber} Children &#8212; ${roomsNumber} Room`;
 
   return (
     <>
@@ -83,7 +82,7 @@ function App() {
                 onClick={openConditionsModal}
               />
               <label htmlFor="conditions" className="label-conditions">
-                {handleLabelCondition(adultsNumber, childrenNumber, roomsNumber)}
+               Adults 0 - Children 0 - Rooms 0
               </label>
               <Button
                 className="button-lg"
@@ -93,7 +92,6 @@ function App() {
             </div>
             {isConditionsOpen && (
               <ModalConditionForm>
-
               </ModalConditionForm>
             )}
           </form>
