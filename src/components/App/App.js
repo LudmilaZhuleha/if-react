@@ -10,12 +10,13 @@ import Button from "../Button/Button";
 import GetHomes from "../GetHomes/GetHomes";
 import AvailableHomes from "../AvailableHomes/AvailableHomes";
 import Footer from "../Footer/Footer";
+import {whiteColor, yellowColor} from "../../constants";
 
 function App() {
   const [value, setValue] = useState("");
-  const [AvailableIsOpen, setAvailableIsOpen] = useState(false);
+  const [availableIsOpen, setAvailableIsOpen] = useState(false);
   const [openSignOut, setOpenSignOut] = useState(false);
-  const [accountColor, setAccountColor] = useState('#FFFFFF');
+  const [accountColor, setAccountColor] = useState(whiteColor);
 
   const handleValue = (e) => {
     setValue(e.target.value);
@@ -28,7 +29,7 @@ function App() {
 
   const handleSignout = () =>{
     setOpenSignOut(true);
-    setAccountColor('#F5BD41');
+    setAccountColor(yellowColor);
   }
   return (
     <>
@@ -79,6 +80,7 @@ function App() {
                 2 Adults &#8212; 0 Children &#8212; 1 Room
               </label>
               <Button
+                type="text"
                 className="button-lg"
                 title="Search"
                 onClick={handleClick}
@@ -87,7 +89,7 @@ function App() {
           </form>
         </div>
       </MainPage>
-      {AvailableIsOpen && (
+      {availableIsOpen && (
         <Container title="Available hotels">
           <AvailableHomes
             value={value}
