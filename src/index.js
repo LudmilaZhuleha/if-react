@@ -5,15 +5,13 @@ import "./index.css";
 import App from "./components/App/App";
 import Home from "./components/Home/Home";
 import LayoutHomes from "./components/LayoutHomes/LayoutHomes";
-import Signin from "./components/Signin/Signin";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="main" element={<App />} />
-        <Route index element={<Signin />} />
+        <Route index element={<App />} />
         <Route path="/" element={<LayoutHomes />}>
           <Route path="/:id" element={<Home />} />
         </Route>

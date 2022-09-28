@@ -4,7 +4,6 @@ import Container from "../Container/Container";
 import MainPage from "../MainPage/MainPage";
 import Icon from "../Icon/Icon";
 import HeaderNav from "../HeaderNav/HeaderNav";
-import Signout from "../Signout/Signout";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 import GetHomes from "../GetHomes/GetHomes";
