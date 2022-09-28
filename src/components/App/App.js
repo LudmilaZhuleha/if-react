@@ -13,7 +13,7 @@ import ModalConditionForm from "../ModalConditionForm/ModalConditionForm";
 
 function App() {
   const [value, setValue] = useState("");
-  const [AvailableIsOpen, setAvailableIsOpen] = useState(false);
+  const [availableIsOpen, setAvailableIsOpen] = useState(false);
   const [isConditionsOpen, setIsConditionsOpen] = useState(false);
 
   const openConditionsModal = () => {
@@ -31,8 +31,6 @@ function App() {
     e.preventDefault();
     setAvailableIsOpen(true);
   };
-
-  // const handleLabelCondition =(adultsNumber, childrenNumber, roomsNumber)=> `${adultsNumber} Adults &#8212; ${childrenNumber} Children &#8212; ${roomsNumber} Room`;
 
   return (
     <>
@@ -97,7 +95,7 @@ function App() {
           </form>
         </div>
       </MainPage>
-      {AvailableIsOpen && (
+      {availableIsOpen && (
         <Container title="Available hotels">
           <AvailableHomes
             value={value}
