@@ -4,6 +4,7 @@ import Container from "../Container/Container";
 import MainPage from "../MainPage/MainPage";
 import Icon from "../Icon/Icon";
 import HeaderNav from "../HeaderNav/HeaderNav";
+import Signout from "../Signout/Signout";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 import GetHomes from "../GetHomes/GetHomes";
@@ -32,12 +33,10 @@ function App() {
     setAvailableIsOpen(true);
   };
 
-  // const handleLabelCondition =(adultsNumber, childrenNumber, roomsNumber)=> `${adultsNumber} Adults &#8212; ${childrenNumber} Children &#8212; ${roomsNumber} Room`;
-
   return (
     <>
       <MainPage>
-        <header className="main-header">
+        <header className="main-header" style={{position: 'relative'}}>
           <Icon className="header-logo" id="logo" width="205" height="40" />
           <HeaderNav
             nightBtn={<Icon className="night-icon" id="night" />}
@@ -85,6 +84,7 @@ function App() {
                Adults 0 - Children 0 - Rooms 0
               </label>
               <Button
+                type="text"
                 className="button-lg"
                 title="Search"
                 onClick={handleClick}
@@ -97,7 +97,7 @@ function App() {
           </form>
         </div>
       </MainPage>
-      {AvailableIsOpen && (
+      {availableIsOpen && (
         <Container title="Available hotels">
           <AvailableHomes
             value={value}
