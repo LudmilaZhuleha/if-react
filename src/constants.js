@@ -9,3 +9,17 @@ export const CONDITION_TYPE = {
   children: 'children',
   rooms: 'rooms',
 }
+export const descriptions = [
+  "How Triphouse works",
+  "Careers",
+  "Privacy",
+  "Terms",
+];
+export const homesTypes = [
+  "Guest houses",
+  "Hotels",
+  "Apartments",
+  "Villas",
+  "Holiday homes",
+  "Hostels",
+];

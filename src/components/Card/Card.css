@@ -4,10 +4,12 @@
     flex-basis: 23%;
     list-style: none;
     margin-bottom: 5px;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .card-image {
-    width: 100%;
+    max-width: 296px;
 }
 .image-name {
     margin-top: 10px;
