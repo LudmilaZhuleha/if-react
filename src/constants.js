@@ -18,3 +18,5 @@ export const homesTypes = [
   "Holiday homes",
   "Hostels",
 ];
+export const whiteColor = "#FFFFFF";
+export const yellowColor = "#F5BD41";
