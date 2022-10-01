@@ -16,7 +16,7 @@ const ModalCondition = ({ title, id, handleChildrenValue }) => {
   const increaseCount = () => {
     if ((id !== CONDITION_TYPE.children) && count >= 0 && count <= 29)
       setCount(count + 1);
-    if (id === CONDITION_TYPE.children && count >= 0 && count <= 9) setCount(count + 1);
+    if (id === CONDITION_TYPE.rooms && count >= 0 && count <= 9) setCount(count + 1);
   };
   return (
     <li className="modal-item" id={id}>

@@ -20,6 +20,7 @@ function App() {
   const [value, setValue] = useState("");
   const [availableIsOpen, setAvailableIsOpen] = useState(false);
   const [isConditionsOpen, setIsConditionsOpen] = useState(false);
+  const [openSignOut, setOpenSignOut] = useState(false);
   const [accountColor, setAccountColor] = useState(whiteColor);
 
   const openConditionsModal = () => {
