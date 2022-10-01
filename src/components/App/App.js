@@ -1,22 +1,27 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import "./App.css";
 import Container from "../Container/Container";
 import MainPage from "../MainPage/MainPage";
 import Icon from "../Icon/Icon";
 import HeaderNav from "../HeaderNav/HeaderNav";
-import Signout from "../Signout/Signout";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 import GetHomes from "../GetHomes/GetHomes";
 import AvailableHomes from "../AvailableHomes/AvailableHomes";
-import Footer from "../Footer/Footer";
-import {whiteColor, yellowColor} from "../../constants";
+import DatePick from "../DatePicker/DatePicker";
+import ModalConditionForm from "../ModalConditionForm/ModalConditionForm";
 
 function App() {
   const [value, setValue] = useState("");
   const [availableIsOpen, setAvailableIsOpen] = useState(false);
-  const [openSignOut, setOpenSignOut] = useState(false);
-  const [accountColor, setAccountColor] = useState(whiteColor);
+  const [isConditionsOpen, setIsConditionsOpen] = useState(false);
+
+  const openConditionsModal = () => {
+    setIsConditionsOpen(!isConditionsOpen);
+  };
+  useEffect(()=>{
+    console.log('modal', isConditionsOpen)
+  }, [isConditionsOpen])
 
   const handleValue = (e) => {
     setValue(e.target.value);
@@ -27,10 +32,6 @@ function App() {
     setAvailableIsOpen(true);
   };
 
-  const handleSignout = () =>{
-    setOpenSignOut(true);
-    setAccountColor(yellowColor);
-  }
   return (
     <>
       <MainPage>
@@ -38,9 +39,8 @@ function App() {
           <Icon className="header-logo" id="logo" width="205" height="40" />
           <HeaderNav
             nightBtn={<Icon className="night-icon" id="night" />}
-            accountBtn={<Icon className="account-icon" style={{color: accountColor}} id="account" onClick={handleSignout} />}
+            accountBtn={<Icon className="account-icon" id="account" />}
           />
-          {openSignOut && (<Signout />)}
         </header>
         <h1 className="main-header-title">
           Discover stays to live, work or just relax
@@ -63,21 +63,24 @@ function App() {
               </Input>
               <div className="input-date-wrap">
                 <Input className="input-date-wrap-1">
-                  <input className="input-date" type="text" id="check-in" />
+                  <DatePick />
                   <label htmlFor="check-in" className="label-date-1">
                     Check-In
                   </label>
                 </Input>
                 <Input className="input-date-wrap-2">
-                  <input className="input-date" type="text" id="check-out" />
+                  <DatePick />
                   <label htmlFor="check-out" className="label-date-2">
                     Check-Out
                   </label>
                 </Input>
               </div>
-              <input type="text" className="input-conditions" id="conditions" />
+              <Input
+                className="input-conditions"
+                onClick={openConditionsModal}
+              />
               <label htmlFor="conditions" className="label-conditions">
-                2 Adults &#8212; 0 Children &#8212; 1 Room
+               Adults 0 - Children 0 - Rooms 0
               </label>
               <Button
                 type="text"
@@ -86,6 +89,10 @@ function App() {
                 onClick={handleClick}
               />
             </div>
+            {isConditionsOpen && (
+              <ModalConditionForm>
+              </ModalConditionForm>
+            )}
           </form>
         </div>
       </MainPage>
@@ -102,7 +109,6 @@ function App() {
       <Container title="Homes Guests Love">
         <GetHomes />
       </Container>
-      <Footer />
     </>
   );
 }
