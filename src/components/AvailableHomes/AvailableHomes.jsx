@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import Card from "../Card/Card";
 import { searchHotelRequest } from "../../constants";
 import { Link } from "react-router-dom";
+import {useSelector} from "react-redux";
 
-const AvailableHomes = ({ value, onChange }) => {
+const AvailableHomes = () => {
   const [available, setAvailable] = useState([]);
+  const search = useSelector(state=> state.search);
 
   useEffect(() => {
     const availableFetch = async (url) => {
@@ -12,8 +14,8 @@ const AvailableHomes = ({ value, onChange }) => {
       const data = await response.json();
       setAvailable(data);
     };
-    availableFetch(`${searchHotelRequest}${value}`);
-    onChange("");
+    availableFetch(`${searchHotelRequest}${search}`);
+    // onChange("");
   }, []);
 
   return (
@@ -32,7 +34,7 @@ const AvailableHomes = ({ value, onChange }) => {
           );
         })
       ) : (
-        <p>{value} - not found</p>
+        <p>{search} - not found</p>
       )}
     </div>
   );

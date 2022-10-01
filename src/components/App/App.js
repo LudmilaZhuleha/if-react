@@ -11,6 +11,8 @@ import GetHomes from "../GetHomes/GetHomes";
 import AvailableHomes from "../AvailableHomes/AvailableHomes";
 import Footer from "../Footer/Footer";
 import {whiteColor, yellowColor} from "../../constants";
+import {useDispatch} from "react-redux";
+import submit_Value from "../../store/actionTypes";
 
 function App() {
   const [value, setValue] = useState("");
@@ -18,12 +20,17 @@ function App() {
   const [openSignOut, setOpenSignOut] = useState(false);
   const [accountColor, setAccountColor] = useState(whiteColor);
 
+  const dispatch = useDispatch();
+
   const handleValue = (e) => {
     setValue(e.target.value);
   };
-
+  const submitSearch = (value)=>{
+    dispatch({type: submit_Value, payload: value})
+  }
   const handleClick = (e) => {
     e.preventDefault();
+    submitSearch(value);
     setAvailableIsOpen(true);
   };
 
@@ -92,10 +99,10 @@ function App() {
       {availableIsOpen && (
         <Container title="Available hotels">
           <AvailableHomes
-            value={value}
-            onChange={(value) => {
-              setValue(value);
-            }}
+            // value={value}
+            // onChange={(value) => {
+            //   setValue(value);
+            // }}
           />
         </Container>
       )}
