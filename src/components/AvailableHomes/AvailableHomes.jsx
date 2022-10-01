@@ -2,11 +2,9 @@ import React, { useState, useEffect } from "react";
 import Card from "../Card/Card";
 import { searchHotelRequest } from "../../constants";
 import { Link } from "react-router-dom";
-import {useSelector} from "react-redux";
 
 const AvailableHomes = () => {
   const [available, setAvailable] = useState([]);
-  const search = useSelector(state=> state.search);
 
   useEffect(() => {
     const availableFetch = async (url) => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import "./App.css";
 import Container from "../Container/Container";
 import MainPage from "../MainPage/MainPage";
@@ -9,6 +9,8 @@ import Input from "../Input/Input";
 import Button from "../Button/Button";
 import GetHomes from "../GetHomes/GetHomes";
 import AvailableHomes from "../AvailableHomes/AvailableHomes";
+import DatePick from "../DatePicker/DatePicker";
+import ModalConditionForm from "../ModalConditionForm/ModalConditionForm";
 import Footer from "../Footer/Footer";
 import {whiteColor, yellowColor} from "../../constants";
 import {useDispatch} from "react-redux";
@@ -17,8 +19,15 @@ import submit_Value from "../../store/actionTypes";
 function App() {
   const [value, setValue] = useState("");
   const [availableIsOpen, setAvailableIsOpen] = useState(false);
-  const [openSignOut, setOpenSignOut] = useState(false);
+  const [isConditionsOpen, setIsConditionsOpen] = useState(false);
   const [accountColor, setAccountColor] = useState(whiteColor);
+
+  const openConditionsModal = () => {
+    setIsConditionsOpen(!isConditionsOpen);
+  };
+  useEffect(()=>{
+    console.log('modal', isConditionsOpen)
+  }, [isConditionsOpen])
 
   const dispatch = useDispatch();
 
@@ -33,7 +42,6 @@ function App() {
     submitSearch(value);
     setAvailableIsOpen(true);
   };
-
   const handleSignout = () =>{
     setOpenSignOut(true);
     setAccountColor(yellowColor);
@@ -70,21 +78,24 @@ function App() {
               </Input>
               <div className="input-date-wrap">
                 <Input className="input-date-wrap-1">
-                  <input className="input-date" type="text" id="check-in" />
+                  <DatePick />
                   <label htmlFor="check-in" className="label-date-1">
                     Check-In
                   </label>
                 </Input>
                 <Input className="input-date-wrap-2">
-                  <input className="input-date" type="text" id="check-out" />
+                  <DatePick />
                   <label htmlFor="check-out" className="label-date-2">
                     Check-Out
                   </label>
                 </Input>
               </div>
-              <input type="text" className="input-conditions" id="conditions" />
+              <Input
+                className="input-conditions"
+                onClick={openConditionsModal}
+              />
               <label htmlFor="conditions" className="label-conditions">
-                2 Adults &#8212; 0 Children &#8212; 1 Room
+               Adults 0 - Children 0 - Rooms 0
               </label>
               <Button
                 type="text"
@@ -93,6 +104,10 @@ function App() {
                 onClick={handleClick}
               />
             </div>
+            {isConditionsOpen && (
+              <ModalConditionForm>
+              </ModalConditionForm>
+            )}
           </form>
         </div>
       </MainPage>
