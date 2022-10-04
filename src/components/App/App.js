@@ -13,7 +13,7 @@ import DatePick from "../DatePicker/DatePicker";
 import ModalConditionForm from "../ModalConditionForm/ModalConditionForm";
 import Footer from "../Footer/Footer";
 import {whiteColor, yellowColor} from "../../constants";
-import {useDispatch} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 import submit_Value from "../../store/actionTypes";
 
 function App() {
@@ -22,6 +22,10 @@ function App() {
   const [isConditionsOpen, setIsConditionsOpen] = useState(false);
   const [openSignOut, setOpenSignOut] = useState(false);
   const [accountColor, setAccountColor] = useState(whiteColor);
+
+  const adultsNumber = useSelector(state => state.conditionsReducer.adults);
+  const childrenNumber = useSelector(state => state.conditionsReducer.children);
+  const roomsNumber = useSelector(state => state.conditionsReducer.rooms);
 
   const openConditionsModal = () => {
     setIsConditionsOpen(!isConditionsOpen);
@@ -96,7 +100,7 @@ function App() {
                 onClick={openConditionsModal}
               />
               <label htmlFor="conditions" className="label-conditions">
-               Adults 0 - Children 0 - Rooms 0
+               Adults {adultsNumber} - Children {childrenNumber} - Rooms {roomsNumber}
               </label>
               <Button
                 type="text"
