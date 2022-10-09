@@ -14,7 +14,7 @@ import ModalConditionForm from "../ModalConditionForm/ModalConditionForm";
 import Footer from "../Footer/Footer";
 import {whiteColor, yellowColor} from "../../constants";
 import {useSelector, useDispatch} from "react-redux";
-import submit_Value from "../../store/actionTypes";
+import {submitValue} from "../../store/actions";
 
 function App() {
   const [value, setValue] = useState("");
@@ -40,7 +40,7 @@ function App() {
     setValue(e.target.value);
   };
   const submitSearch = (value)=>{
-    dispatch({type: submit_Value, payload: value})
+    dispatch(submitValue(value));
   }
   const handleClick = (e) => {
     e.preventDefault();
