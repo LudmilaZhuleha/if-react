@@ -18,7 +18,8 @@ import {
   decrementChildren,
   decrementRooms,
   incrementAdults,
-  incrementChildren, incrementRooms
+  incrementChildren,
+  incrementRooms,
 } from "../../store/actions";
 
 const ModalConditionForm = () => {

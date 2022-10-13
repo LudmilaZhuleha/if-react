@@ -7,3 +7,6 @@ export const increment_rooms = "INCREMENT_ROOMS";
 export const decrement_adults = "DECREMENT_ADULTS";
 export const decrement_children = "DECREMENT_CHILDREN";
 export const decrement_rooms = "DECREMENT_ROOMS";
+export const children_ages = "CHILDREN_AGES";
+
+export const fetch_available_hotels = "FETCH_AVAILABLE_HOTELS";

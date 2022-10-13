@@ -1,4 +1,5 @@
 import submit_Value, {
+  children_ages,
   decrement_adults,
   decrement_children, decrement_rooms,
   increment_adults,
@@ -28,4 +29,7 @@ export const decrementChildren = ()=>(
 );
 export const decrementRooms = ()=>(
   {type: decrement_rooms}
+);
+export const childrenAges = (payload)=>(
+  {type: children_ages, payload}
 );

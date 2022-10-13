@@ -1,4 +1,5 @@
 import {
+  children_ages,
   decrement_adults,
   decrement_children, decrement_rooms,
   increment_adults,
@@ -10,6 +11,7 @@ const initialState = {
   adults: 0,
   children: 0,
   rooms: 0,
+  ages: []
 }
 
 const conditionsReducer =(state = initialState, action) =>{
@@ -26,6 +28,8 @@ const conditionsReducer =(state = initialState, action) =>{
       return  {...state, children: state.children - 1};
     case decrement_rooms:
       return  {...state, rooms: state.rooms - 1};
+    case children_ages:
+      return {...state, ages: [...state.ages, action.payload]}
     default:
       return state;
   }

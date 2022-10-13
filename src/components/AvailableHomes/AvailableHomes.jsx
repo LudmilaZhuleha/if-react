@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 const AvailableHomes = () => {
   const [available, setAvailable] = useState([]);
-  const search = useSelector((state) => state.searchValueReducer.search);
+  const search = useSelector(state=>state.searchValueReducer.search);
 
   useEffect(() => {
     const availableFetch = async (url) => {
@@ -17,6 +17,7 @@ const AvailableHomes = () => {
     availableFetch(`${searchHotelRequest}${search}`);
     // onChange("");
   }, []);
+  // const available = useSelector(state=>state.searchValueReducer.available);
 
   return (
     <div className="cards">

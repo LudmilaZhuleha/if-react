@@ -12,9 +12,10 @@ import AvailableHomes from "../AvailableHomes/AvailableHomes";
 import DatePick from "../DatePicker/DatePicker";
 import ModalConditionForm from "../ModalConditionForm/ModalConditionForm";
 import Footer from "../Footer/Footer";
-import {whiteColor, yellowColor} from "../../constants";
+import {searchHotelRequest, whiteColor, yellowColor} from "../../constants";
 import {useSelector, useDispatch} from "react-redux";
 import {submitValue} from "../../store/actions";
+import {fetchAvailableHotels} from "../../store/asyncActions";
 
 function App() {
   const [value, setValue] = useState("");
@@ -26,6 +27,12 @@ function App() {
   const adultsNumber = useSelector(state => state.conditionsReducer.adults);
   const childrenNumber = useSelector(state => state.conditionsReducer.children);
   const roomsNumber = useSelector(state => state.conditionsReducer.rooms);
+
+  // const search = useSelector((state) => state.searchValueReducer.search);
+  // const adults = useSelector((state) => state.conditionsReducer.adults);
+  // const rooms = useSelector((state) => state.conditionsReducer.rooms);
+  // const ages = useSelector((state)=>state.conditionsReducer.ages).join(',');
+  // const fetchAvailableUrl = `${searchHotelRequest}${search}&dateFrom=${dateFrom}&dateTo=${dateTo}&adults=${adults}&children=${ages}&rooms=${rooms}`;
 
   const openConditionsModal = () => {
     setIsConditionsOpen(!isConditionsOpen);
@@ -42,9 +49,17 @@ function App() {
   const submitSearch = (value)=>{
     dispatch(submitValue(value));
   }
+  // const fetchAvailable =()=>{
+  //   return function(dispatch){
+  //     fetch(fetchAvailableUrl)
+  //       .then(response=> response.json())
+  //       .then(json=>dispatch(fetchAvailableHotels(json)))
+  //   }
+  // }
   const handleClick = (e) => {
     e.preventDefault();
     submitSearch(value);
+    // fetchAvailable();
     setAvailableIsOpen(true);
   };
   const handleSignout = () =>{

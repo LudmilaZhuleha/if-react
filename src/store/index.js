@@ -1,4 +1,7 @@
-import {createStore} from "redux";
+import {createStore, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import logger from 'redux-logger';
 import searchValueReducer from './searchValueReducer';
 import conditionsReducer from './conditionsReducer';
 import {combineReducers} from "redux";
@@ -17,6 +20,6 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export const store = createStore(persistedReducer);
+export const store = createStore(persistedReducer, composeWithDevTools(applyMiddleware(logger, thunk)));
 
 export const persistor = persistStore(store);
