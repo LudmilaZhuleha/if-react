@@ -28,14 +28,24 @@ function App() {
   const childrenNumber = useSelector(state => state.conditionsReducer.children);
   const roomsNumber = useSelector(state => state.conditionsReducer.rooms);
 
-  const search = useSelector((state) => state.searchValueReducer.search);
+  const dispatch = useDispatch();
+
+  const handleValue = (e) => {
+    setValue(e.target.value);
+  };
+
+  const submitSearch = (value)=>{
+    dispatch(submitValue(value));
+  }
+
+  // const search = useSelector((state) => state.searchValueReducer.search);
   const adults = useSelector((state) => state.conditionsReducer.adults);
   const rooms = useSelector((state) => state.conditionsReducer.rooms);
   const ages = useSelector((state)=>state.conditionsReducer.ages).join(',');
   const dateStart = useSelector(state => state.conditionsReducer.dateStart);
   const dateEnd = useSelector(state => state.conditionsReducer.dateEnd);
   const fetchAvailableUrl =
-  `${searchHotelRequest}${search}&dateFrom=${dateStart}&dateTo=${dateEnd}&adults=${adults}&children=${ages}&rooms=${rooms}`;
+  `https://fe-student-api.herokuapp.com/api/hotels?search=${value}&dateFrom=${dateStart}&dateTo=${dateEnd}&adults=${adults}&children=${ages}&rooms=${rooms}`;
 
   const openConditionsModal = () => {
     setIsConditionsOpen(!isConditionsOpen);
@@ -44,17 +54,9 @@ function App() {
     console.log('modal', isConditionsOpen)
   }, [isConditionsOpen])
 
-  const dispatch = useDispatch();
-
-  const handleValue = (e) => {
-    setValue(e.target.value);
-  };
-  const submitSearch = (value)=>{
-    dispatch(submitValue(value));
-  }
-  const fetchAvailable =()=>{
+  const fetchAvailable =(url)=>{
     return function(dispatch){
-      fetch(fetchAvailableUrl)
+      fetch(url)
         .then(response=> response.json())
         .then(json=>dispatch(fetchAvailableHotels(json)))
     }
@@ -62,7 +64,9 @@ function App() {
   const handleClick = (e) => {
     e.preventDefault();
     submitSearch(value);
-    fetchAvailable();
+    fetchAvailable(fetchAvailableUrl);
+    console.log(fetchAvailableUrl);
+    openConditionsModal();
     setAvailableIsOpen(true);
   };
   const handleSignout = () =>{
