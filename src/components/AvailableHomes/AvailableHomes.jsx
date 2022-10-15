@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Card from "../Card/Card";
 import { searchHotelRequest } from "../../constants";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const AvailableHomes = ({ value, onChange }) => {
+const AvailableHomes = () => {
   const [available, setAvailable] = useState([]);
+  const search = useSelector((state) => state.searchValueReducer.search);
 
   useEffect(() => {
     const availableFetch = async (url) => {
@@ -11,26 +14,27 @@ const AvailableHomes = ({ value, onChange }) => {
       const data = await response.json();
       setAvailable(data);
     };
-    availableFetch(`${searchHotelRequest}${value}`);
-    onChange("");
+    availableFetch(`${searchHotelRequest}${search}`);
+    // onChange("");
   }, []);
 
   return (
     <div className="cards">
       {available.length > 0 ? (
-        available.map((home) => {
+        available.map((item) => {
           return (
-            <Card
-              imageUrl={home.imageUrl}
-              name={home.name}
-              city={home.city}
-              country={home.country}
-              key={home.id}
-            />
+            <Link key={item.id} to={`/${item.id}`}>
+              <Card
+                imageUrl={item.imageUrl}
+                name={item.name}
+                city={item.city}
+                country={item.country}
+              />
+            </Link>
           );
         })
       ) : (
-        <p>{value} - not found</p>
+        <p>{search} - not found</p>
       )}
     </div>
   );

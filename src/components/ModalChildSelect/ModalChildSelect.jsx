@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ModalChildSelect.css";
 
-const ModalChildSelect = ({children}) => {
+const ModalChildSelect = ({ children }) => {
   return (
     <div className="modal-list-info">
       <p className="modal-list-title">
