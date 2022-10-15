@@ -3,8 +3,6 @@ import "./ModalConditionForm.css";
 import ModalChildSelect from "../ModalChildSelect/ModalChildSelect";
 import Select from "../Select/Select";
 import { useSelector, useDispatch } from "react-redux";
-import ModalCondition from "../ModalCondition/ModalCondition";
-import { CONDITION_TYPE } from "../../constants";
 import {
   decrement_adults,
   decrement_children,
@@ -15,7 +13,6 @@ import {
 } from "../../store/actionTypes";
 
 const ModalConditionForm = () => {
-  // const [childrenNumber, setChildrenNumber] = useState(0);
   const [selects, setSelects] = useState(null);
 
   const adultsNumber = useSelector((state) => state.conditionsReducer.adults);
@@ -25,16 +22,6 @@ const ModalConditionForm = () => {
   const roomsNumber = useSelector((state) => state.conditionsReducer.rooms);
 
   const dispatch = useDispatch();
-
-  // const decreaseCount = () => {
-  //   if (count >= 1) setCount(count - 1);
-  // };
-  //
-  // const increaseCount = () => {
-  //   if ((id !== CONDITION_TYPE.children) && count >= 0 && count <= 29)
-  //     setCount(count + 1);
-  //   if (id === CONDITION_TYPE.children && count >= 0 && count <= 9) setCount(count + 1);
-  // };
 
   useEffect(() => {
     const createSelectArray = (num) => {
@@ -121,13 +108,6 @@ const ModalConditionForm = () => {
             </button>
           </div>
         </li>
-        {/*<ModalCondition title="Adults" id={CONDITION_TYPE.adults}/>*/}
-        {/*<ModalCondition*/}
-        {/*  title="Children"*/}
-        {/*  id={CONDITION_TYPE.children}*/}
-        {/*  handleChildrenValue={(value) => {setChildrenNumber(value)}}*/}
-        {/*/>*/}
-        {/*<ModalCondition title="Rooms" id={CONDITION_TYPE.rooms}/>*/}
       </ul>
       {childrenNumber > 0 ? (
         <ModalChildSelect>
