@@ -3,7 +3,9 @@ import submit_Value, {
   decrement_children, decrement_rooms,
   increment_adults,
   increment_children,
-  increment_rooms
+  increment_rooms,
+  logIn,
+  logOut,
 } from "./actionTypes";
 
 export const submitValue = (payload) =>(
@@ -28,4 +30,10 @@ export const decrementChildren = ()=>(
 );
 export const decrementRooms = ()=>(
   {type: decrement_rooms}
+);
+export const login = (payload)=>(
+  {type: logIn, payload: payload}
+);
+export const logout = (payload)=>(
+  {type: logOut, payload: payload}
 );

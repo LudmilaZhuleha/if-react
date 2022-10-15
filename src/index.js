@@ -17,10 +17,10 @@ root.render(
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
           <Routes>
-            <Route path="main" element={<App />} />
-            <Route index element={<Signin />} />
+            <Route path="login" element={<Signin />} />
+            <Route path="/" element={<App />}></Route>
             <Route path="/" element={<LayoutHomes />}>
-              <Route path="/:id" element={<Home />} />
+                <Route path="/:id" element={<Home />} />
             </Route>
           </Routes>
         </BrowserRouter>

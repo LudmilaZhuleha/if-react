@@ -15,6 +15,7 @@ import Footer from "../Footer/Footer";
 import {whiteColor, yellowColor} from "../../constants";
 import {useSelector, useDispatch} from "react-redux";
 import {submitValue} from "../../store/actions";
+import {useNavigate} from "react-router-dom";
 
 function App() {
   const [value, setValue] = useState("");
@@ -27,12 +28,17 @@ function App() {
   const childrenNumber = useSelector(state => state.conditionsReducer.children);
   const roomsNumber = useSelector(state => state.conditionsReducer.rooms);
 
+  const isLogged = useSelector(state => state.loginReducer.isLogged);
+  const navigate = useNavigate();
+
   const openConditionsModal = () => {
     setIsConditionsOpen(!isConditionsOpen);
   };
   useEffect(()=>{
-    console.log('modal', isConditionsOpen)
-  }, [isConditionsOpen])
+    if(!isLogged) {
+      navigate('/login');
+    }
+  }, [isLogged])
 
   const dispatch = useDispatch();
 
