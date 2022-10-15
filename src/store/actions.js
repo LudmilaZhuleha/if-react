@@ -1,5 +1,5 @@
 import submit_Value, {
-  children_ages,
+  children_ages, date_from, date_to,
   decrement_adults,
   decrement_children, decrement_rooms,
   increment_adults,
@@ -32,4 +32,10 @@ export const decrementRooms = ()=>(
 );
 export const childrenAges = (payload)=>(
   {type: children_ages, payload}
+);
+export const dateFrom = (payload)=>(
+  {type: date_from, payload}
+);
+export const dateTo = (payload)=>(
+  {type: date_to, payload}
 );

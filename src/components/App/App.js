@@ -28,11 +28,14 @@ function App() {
   const childrenNumber = useSelector(state => state.conditionsReducer.children);
   const roomsNumber = useSelector(state => state.conditionsReducer.rooms);
 
-  // const search = useSelector((state) => state.searchValueReducer.search);
-  // const adults = useSelector((state) => state.conditionsReducer.adults);
-  // const rooms = useSelector((state) => state.conditionsReducer.rooms);
-  // const ages = useSelector((state)=>state.conditionsReducer.ages).join(',');
-  // const fetchAvailableUrl = `${searchHotelRequest}${search}&dateFrom=${dateFrom}&dateTo=${dateTo}&adults=${adults}&children=${ages}&rooms=${rooms}`;
+  const search = useSelector((state) => state.searchValueReducer.search);
+  const adults = useSelector((state) => state.conditionsReducer.adults);
+  const rooms = useSelector((state) => state.conditionsReducer.rooms);
+  const ages = useSelector((state)=>state.conditionsReducer.ages).join(',');
+  const dateStart = useSelector(state => state.conditionsReducer.dateStart);
+  const dateEnd = useSelector(state => state.conditionsReducer.dateEnd);
+  const fetchAvailableUrl =
+  `${searchHotelRequest}${search}&dateFrom=${dateStart}&dateTo=${dateEnd}&adults=${adults}&children=${ages}&rooms=${rooms}`;
 
   const openConditionsModal = () => {
     setIsConditionsOpen(!isConditionsOpen);
@@ -49,17 +52,17 @@ function App() {
   const submitSearch = (value)=>{
     dispatch(submitValue(value));
   }
-  // const fetchAvailable =()=>{
-  //   return function(dispatch){
-  //     fetch(fetchAvailableUrl)
-  //       .then(response=> response.json())
-  //       .then(json=>dispatch(fetchAvailableHotels(json)))
-  //   }
-  // }
+  const fetchAvailable =()=>{
+    return function(dispatch){
+      fetch(fetchAvailableUrl)
+        .then(response=> response.json())
+        .then(json=>dispatch(fetchAvailableHotels(json)))
+    }
+  }
   const handleClick = (e) => {
     e.preventDefault();
     submitSearch(value);
-    // fetchAvailable();
+    fetchAvailable();
     setAvailableIsOpen(true);
   };
   const handleSignout = () =>{
@@ -98,13 +101,13 @@ function App() {
               </Input>
               <div className="input-date-wrap">
                 <Input className="input-date-wrap-1">
-                  <DatePick />
+                  <DatePick id="date_start"/>
                   <label htmlFor="check-in" className="label-date-1">
                     Check-In
                   </label>
                 </Input>
                 <Input className="input-date-wrap-2">
-                  <DatePick />
+                  <DatePick id="date_end" />
                   <label htmlFor="check-out" className="label-date-2">
                     Check-Out
                   </label>
