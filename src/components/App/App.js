@@ -12,7 +12,7 @@ import AvailableHomes from "../AvailableHomes/AvailableHomes";
 import DatePick from "../DatePicker/DatePicker";
 import ModalConditionForm from "../ModalConditionForm/ModalConditionForm";
 import Footer from "../Footer/Footer";
-import {searchHotelRequest, whiteColor, yellowColor} from "../../constants";
+import {whiteColor, yellowColor} from "../../constants";
 import {useSelector, useDispatch} from "react-redux";
 import {submitValue} from "../../store/actions";
 import {fetchAvailableHotels} from "../../store/asyncActions";
@@ -50,9 +50,6 @@ function App() {
   const openConditionsModal = () => {
     setIsConditionsOpen(!isConditionsOpen);
   };
-  useEffect(()=>{
-    console.log('modal', isConditionsOpen)
-  }, [isConditionsOpen])
 
   const fetchAvailable =(url)=>{
     return function(dispatch){

@@ -1,6 +1,5 @@
 const submit_Value = 'submit_Value';
 export default submit_Value;
-
 export const increment_adults = "INCREMENT_ADULTS";
 export const increment_children = "INCREMENT_CHILDREN";
 export const increment_rooms = "INCREMENT_ROOMS";

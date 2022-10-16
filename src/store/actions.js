@@ -4,7 +4,7 @@ import submit_Value, {
   decrement_children, decrement_rooms,
   increment_adults,
   increment_children,
-  increment_rooms
+  increment_rooms,
 } from "./actionTypes";
 
 export const submitValue = (payload) =>(

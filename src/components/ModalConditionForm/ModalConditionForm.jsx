@@ -3,16 +3,6 @@ import "./ModalConditionForm.css";
 import ModalChildSelect from "../ModalChildSelect/ModalChildSelect";
 import Select from "../Select/Select";
 import { useSelector, useDispatch } from "react-redux";
-import ModalCondition from "../ModalCondition/ModalCondition";
-import { CONDITION_TYPE } from "../../constants";
-import {
-  decrement_adults,
-  decrement_children,
-  decrement_rooms,
-  increment_adults,
-  increment_children,
-  increment_rooms,
-} from "../../store/actionTypes";
 import {
   decrementAdults,
   decrementChildren,
@@ -23,8 +13,7 @@ import {
 } from "../../store/actions";
 
 const ModalConditionForm = () => {
-  // const [childrenNumber, setChildrenNumber] = useState(0);
-  const [selects, setSelects] = useState(null);
+  const [selects, setSelects] = useState([]);
 
   const adultsNumber = useSelector((state) => state.conditionsReducer.adults);
   const childrenNumber = useSelector(
@@ -32,24 +21,40 @@ const ModalConditionForm = () => {
   );
   const roomsNumber = useSelector((state) => state.conditionsReducer.rooms);
 
-  const dispatch = useDispatch();
-
-  // const decreaseCount = () => {
-  //   if (count >= 1) setCount(count - 1);
-  // };
-  //
-  // const increaseCount = () => {
-  //   if ((id !== CONDITION_TYPE.children) && count >= 0 && count <= 29)
-  //     setCount(count + 1);
-  //   if (id === CONDITION_TYPE.children && count >= 0 && count <= 9) setCount(count + 1);
-  // };
-
   useEffect(() => {
     const createSelectArray = (num) => {
       return Array(num).fill(0);
     };
     setSelects(createSelectArray(childrenNumber));
   }, [childrenNumber]);
+
+  const dispatch = useDispatch();
+
+  const incrementAdultsNum = ()=>{
+    if (adultsNumber >= 0 && adultsNumber <= 29)
+      return dispatch(incrementAdults());
+  };
+  const incrementChildrenNum = ()=>{
+    if (childrenNumber >= 0 && childrenNumber <= 9)
+      return dispatch(incrementChildren());
+  };
+  const incrementRoomsNum = ()=>{
+    if (roomsNumber >= 0 && roomsNumber <= 29)
+      return dispatch(incrementRooms());
+  };
+
+  const decrementAdultsNum = ()=>{
+    if (adultsNumber >= 1)
+      return dispatch(decrementAdults());
+  };
+  const decrementChildrenNum = ()=>{
+    if (childrenNumber >= 1)
+      return dispatch(decrementChildren());
+  };
+  const decrementRoomsNum = ()=>{
+    if (roomsNumber >= 1)
+      return dispatch(decrementRooms());
+  };
 
   return (
     <div className="main-form-modal">
@@ -61,7 +66,7 @@ const ModalConditionForm = () => {
               type="button"
               className="modal-item-down"
               onClick={() => {
-                if (adultsNumber >= 1) dispatch(decrementAdults());
+                decrementAdultsNum();
               }}
             >
               -
@@ -70,10 +75,9 @@ const ModalConditionForm = () => {
             <button
               type="button"
               className="modal-item-up"
-              onClick={() => {
-                if (adultsNumber >= 0 && adultsNumber <= 29)
-                  dispatch(incrementAdults());
-              }}
+              onClick={()=>{
+                incrementAdultsNum()}
+              }
             >
               +
             </button>
@@ -86,7 +90,7 @@ const ModalConditionForm = () => {
               type="button"
               className="modal-item-down"
               onClick={() => {
-                if (childrenNumber >= 1) dispatch(decrementChildren());
+                decrementChildrenNum();
               }}
             >
               -
@@ -96,8 +100,7 @@ const ModalConditionForm = () => {
               type="button"
               className="modal-item-up"
               onClick={() => {
-                if (childrenNumber >= 0 && childrenNumber <= 9)
-                  dispatch(incrementChildren());
+                incrementChildrenNum();
               }}
             >
               +
@@ -111,7 +114,7 @@ const ModalConditionForm = () => {
               type="button"
               className="modal-item-down"
               onClick={() => {
-                if (roomsNumber >= 1) dispatch(decrementRooms());
+                decrementRoomsNum();
               }}
             >
               -
@@ -121,21 +124,13 @@ const ModalConditionForm = () => {
               type="button"
               className="modal-item-up"
               onClick={() => {
-                if (roomsNumber >= 0 && roomsNumber <= 29)
-                  dispatch(incrementRooms());
+                incrementRoomsNum();
               }}
             >
               +
             </button>
           </div>
         </li>
-        {/*<ModalCondition title="Adults" id={CONDITION_TYPE.adults}/>*/}
-        {/*<ModalCondition*/}
-        {/*  title="Children"*/}
-        {/*  id={CONDITION_TYPE.children}*/}
-        {/*  handleChildrenValue={(value) => {setChildrenNumber(value)}}*/}
-        {/*/>*/}
-        {/*<ModalCondition title="Rooms" id={CONDITION_TYPE.rooms}/>*/}
       </ul>
       {childrenNumber > 0 ? (
         <ModalChildSelect>
