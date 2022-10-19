@@ -35,6 +35,11 @@ const ModalConditionForm = () => {
       return dispatch(incrementAdults());
   };
   const incrementChildrenNum = ()=>{
+    if(adultsNumber === 0) {
+      alert("Children are not allowed to travel without adults! Please indicate Adults first!");
+      return;
+    }
+
     if (childrenNumber >= 0 && childrenNumber <= 9)
       return dispatch(incrementChildren());
   };
