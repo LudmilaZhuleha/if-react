@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import "./App.css";
 import Container from "../Container/Container";
 import MainPage from "../MainPage/MainPage";
@@ -14,7 +14,7 @@ import ModalConditionForm from "../ModalConditionForm/ModalConditionForm";
 import Footer from "../Footer/Footer";
 import {whiteColor, yellowColor} from "../../constants";
 import {useSelector, useDispatch} from "react-redux";
-import {submitValue} from "../../store/actions";
+import {submitValue, toISODate} from "../../store/actions";
 import {fetchAvailableHotels} from "../../store/asyncActions";
 
 function App() {
@@ -30,20 +30,23 @@ function App() {
 
   const dispatch = useDispatch();
 
+  const submitSearch = (val)=>{
+    dispatch(submitValue(val));
+  }
   const handleValue = (e) => {
     setValue(e.target.value);
-  };
 
-  const submitSearch = (value)=>{
-    dispatch(submitValue(value));
-  }
+  };
 
   // const search = useSelector((state) => state.searchValueReducer.search);
   const adults = useSelector((state) => state.conditionsReducer.adults);
   const rooms = useSelector((state) => state.conditionsReducer.rooms);
   const ages = useSelector((state)=>state.conditionsReducer.ages).join(',');
-  const dateStart = useSelector(state => state.conditionsReducer.dateStart);
-  const dateEnd = useSelector(state => state.conditionsReducer.dateEnd);
+  const dateStartMs = useSelector(state => state.conditionsReducer.dateStart);
+  const dateEndMs = useSelector(state => state.conditionsReducer.dateEnd);
+
+  const dateStart = toISODate(dateStartMs);
+  const dateEnd = toISODate(dateEndMs);
   const fetchAvailableUrl =
   `https://fe-student-api.herokuapp.com/api/hotels?search=${value}&dateFrom=${dateStart}&dateTo=${dateEnd}&adults=${adults}&children=${ages}&rooms=${rooms}`;
 
@@ -51,18 +54,16 @@ function App() {
     setIsConditionsOpen(!isConditionsOpen);
   };
 
-  const fetchAvailable =(url)=>{
+  const fetchAvailable = ()=>{
     return function(dispatch){
-      fetch(url)
+      fetch(fetchAvailableUrl)
         .then(response=> response.json())
-        .then(json=>dispatch(fetchAvailableHotels(json)))
-    }
-  }
+        .then((data) => dispatch(fetchAvailableHotels(data)))
+    }};
+
   const handleClick = (e) => {
     e.preventDefault();
-    submitSearch(value);
-    fetchAvailable(fetchAvailableUrl);
-    console.log(fetchAvailableUrl);
+    dispatch(fetchAvailable());
     openConditionsModal();
     setAvailableIsOpen(true);
   };
@@ -122,7 +123,7 @@ function App() {
                Adults {adultsNumber} - Children {childrenNumber} - Rooms {roomsNumber}
               </label>
               <Button
-                type="text"
+                type="submit"
                 className="button-lg"
                 title="Search"
                 onClick={handleClick}

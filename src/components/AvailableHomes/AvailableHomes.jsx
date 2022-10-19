@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 const AvailableHomes = () => {
   // const [available, setAvailable] = useState([]);
   const search = useSelector(state=>state.searchValueReducer.search);
+  console.log(search);
+
   const available = useSelector(state=>state.searchValueReducer.available);
   // useEffect(() => {
   //   const availableFetch = async (url) => {
@@ -20,8 +22,8 @@ const AvailableHomes = () => {
 
   return (
     <div className="cards">
-      {available.length > 0 ? (
-        available.map((item) => {
+      {search.length > 0 ? (
+        search.map((item) => {
           return (
             <Link key={item.id} to={`/${item.id}`}>
               <Card

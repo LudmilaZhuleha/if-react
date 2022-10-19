@@ -39,3 +39,13 @@ export const dateFrom = (payload)=>(
 export const dateTo = (payload)=>(
   {type: date_to, payload}
 );
+
+export const toISODate= (milliseconds) =>{
+  var date = new Date(milliseconds);
+  var y = date.getFullYear()
+  var m = date.getMonth() + 1;
+  var d = date.getDate();
+  m = (m < 10) ? '0' + m : m;
+  d = (d < 10) ? '0' + d : d;
+  return [d, m, y].join('.');
+}
