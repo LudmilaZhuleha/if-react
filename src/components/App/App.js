@@ -124,12 +124,7 @@ function App() {
       </MainPage>
       {availableIsOpen && (
         <Container title="Available hotels">
-          <AvailableHomes
-            // value={value}
-            // onChange={(value) => {
-            //   setValue(value);
-            // }}
-          />
+          <AvailableHomes />
         </Container>
       )}
       <Container title="Homes Guests Love">
