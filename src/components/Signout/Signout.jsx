@@ -2,13 +2,18 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Icon from "../Icon/Icon";
 import "./Signout.css";
+import {useDispatch} from "react-redux";
+import {logout} from "../../store/actions";
 
 const Signout = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   return (
     <button
       onClick={() => {
-        navigate("/");
+        dispatch(logout(false));
+        navigate("/login");
       }}
       type="text"
       className="signout-btn"
