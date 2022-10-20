@@ -5,17 +5,29 @@ import HeaderNav from "../HeaderNav/HeaderNav";
 import MainPage from "../MainPage/MainPage";
 import Button from "../Button/Button";
 import "./Signin.css";
+import {useDispatch, useSelector} from "react-redux";
+import {login, submitValue} from "../../store/actions";
+import {useEffect} from "react";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [auth, setAuth] = useState(false);
+  const isLogged = useSelector(state => state.loginReducer.isLogged);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    if(isLogged) {
+      navigate('/');
+    }
+  }, [isLogged])
+
   const authorized = () => {
-    setAuth(true);
-    navigate("/main");
+    dispatch(login(true));
   };
+
+
   return (
     <MainPage style={{ position: "relative" }}>
       <header className="main-header">

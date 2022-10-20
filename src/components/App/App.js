@@ -14,7 +14,8 @@ import ModalConditionForm from "../ModalConditionForm/ModalConditionForm";
 import Footer from "../Footer/Footer";
 import {whiteColor, yellowColor} from "../../constants";
 import {useSelector, useDispatch} from "react-redux";
-import submit_Value from "../../store/actionTypes";
+import {submitValue} from "../../store/actions";
+import {useNavigate} from "react-router-dom";
 
 function App() {
   const [value, setValue] = useState("");
@@ -27,12 +28,17 @@ function App() {
   const childrenNumber = useSelector(state => state.conditionsReducer.children);
   const roomsNumber = useSelector(state => state.conditionsReducer.rooms);
 
+  const isLogged = useSelector(state => state.loginReducer.isLogged);
+  const navigate = useNavigate();
+
   const openConditionsModal = () => {
     setIsConditionsOpen(!isConditionsOpen);
   };
   useEffect(()=>{
-    console.log('modal', isConditionsOpen)
-  }, [isConditionsOpen])
+    if(!isLogged) {
+      navigate('/login');
+    }
+  }, [isLogged])
 
   const dispatch = useDispatch();
 
@@ -40,7 +46,7 @@ function App() {
     setValue(e.target.value);
   };
   const submitSearch = (value)=>{
-    dispatch({type: submit_Value, payload: value})
+    dispatch(submitValue(value));
   }
   const handleClick = (e) => {
     e.preventDefault();
@@ -118,12 +124,7 @@ function App() {
       </MainPage>
       {availableIsOpen && (
         <Container title="Available hotels">
-          <AvailableHomes
-            // value={value}
-            // onChange={(value) => {
-            //   setValue(value);
-            // }}
-          />
+          <AvailableHomes />
         </Container>
       )}
       <Container title="Homes Guests Love">

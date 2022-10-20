@@ -7,21 +7,24 @@ import App from "./components/App/App";
 import Home from "./components/Home/Home";
 import LayoutHomes from "./components/LayoutHomes/LayoutHomes";
 import Signin from "./components/Signin/Signin";
-import {store} from "./store";
+import { persistor, store } from "./store";
+import { PersistGate } from 'redux-persist/integration/react';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-      <Routes>
-        <Route path="main" element={<App />} />
-        <Route index element={<Signin />} />
-        <Route path="/" element={<LayoutHomes />}>
-          <Route path="/:id" element={<Home />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="login" element={<Signin />} />
+            <Route path="/" element={<App />}></Route>
+            <Route path="/" element={<LayoutHomes />}>
+                <Route path="/:id" element={<Home />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );
